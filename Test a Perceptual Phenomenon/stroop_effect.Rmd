@@ -1,0 +1,49 @@
+---
+title: "Stroop Effect"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readr)
+library(tidyverse)
+```
+
+```{r dataset}
+stroopdata <- read_csv("~/Documents/Udacity Projects/Inferential Statistics/stroopdata copy.csv")
+```
+
+```{r congruent hist}
+stroopdata %>%
+  ggplot(aes(Congruent)) +
+  geom_histogram(binwidth = 1) +
+  theme_minimal() +
+  ggtitle("Distribution of Congruent Words Condition Scores") +
+  xlab("Task Completion Time (in seconds)") +
+  ylab("Count") +
+  scale_x_continuous(breaks = seq(8, 23, 2))
+```
+
+```{r incongruent hist}
+stroopdata %>%
+  ggplot(aes(Incongruent)) +
+  geom_histogram(binwidth = 1) +
+  theme_minimal() +
+  ggtitle("Distribution of Incongruent Words Condition Scores") +
+  xlab("Task Completion Time (in seconds)") +
+  ylab("Count") +
+  scale_x_continuous(breaks = seq(14, 36, 2))
+```
+
+```{r differences hist}
+stroopdata %>%
+  ggplot(aes(Differences)) +
+  geom_histogram(binwidth = 1) +
+  theme_minimal() +
+  ggtitle("Distribution of Differences in Scores") +
+  xlab("Task Completion Time (in seconds)") +
+  ylab("Count") +
+  scale_x_continuous(breaks = seq(0, 22, 2))
+```
+
